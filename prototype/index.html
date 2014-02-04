@@ -14,6 +14,7 @@
         <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/itloft.js"></script>
+        <script type="text/javascript" src="js/send-mail.js"></script>
 
         <!--[if lt IE 9]>
             <script src="js/html5shiv.js"></script>
@@ -224,14 +225,17 @@
                         <div class="row">
                             <div class="col-md-6 col-md-offset-1">
                                 <div class="form-group">
-                                    <input type="email" class="form-control input-loft text-20 full-height" id="input-email" placeholder="Ваш e-mail">
+                                    <input type="email" class="form-control input-loft text-20 full-height" id="js-input-email-sub" placeholder="Ваш e-mail">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
-                                <button type="submit" class="btn btn-loft text-22">Подписаться</button>
+                                <button type="submit" class="btn btn-loft text-22" id="js-submit-sub">Подписаться</button>
                             </div>
                         </div>
+
+                        <div class="req-success" id="js-req-success-sub">Подписка прошла успешно.</div>
+                        <div class="req-error" id="js-req-error-sub">Ошибка.</div>
                     </form>
 
                     <span class="text-24"><br>А также следите за нами в <a href="http://vk.com/itloftomsk">группе Вконтакте</a> и в <a href="https://twitter.com/_itloft">Твиттере</a></span>
@@ -276,20 +280,23 @@
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-loft text-20 full-height" id="input-name" placeholder="Как вас зовут?">
+                                    <input type="text" class="form-control input-loft text-20 full-height" id="js-input-name" placeholder="Как вас зовут?">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control input-loft text-20 full-height" id="input-email" placeholder="Ваш e-mail">
+                                    <input type="email" class="form-control input-loft text-20 full-height" id="js-input-email" placeholder="Ваш e-mail">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="tel" class="form-control input-loft text-20 full-height" id="input-phone" placeholder="Ваш телефон">
+                                    <input type="tel" class="form-control input-loft text-20 full-height" id="js-input-phone" placeholder="Ваш телефон">
                                 </div>
 
-                                <button type="submit" class="btn btn-loft text-22 full-width">Оставить заявку</button>
+                                <button type="submit" class="btn btn-loft text-22 full-width" id="js-submit">Оставить заявку</button>
                             </div>
                         </div>
+
+                        <div class="req-success" id="js-req-success">Заявка отправлена.</div>
+                        <div class="req-error" id="js-req-error">Ошибка.</div>
                     </form>
                 </div>
             </div>

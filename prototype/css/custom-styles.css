@@ -273,3 +273,15 @@ a:focus {
 	top: 10px;
 	right: 10px;
 }
+
+.req-success {
+	color: green;
+	text-align: center;
+	display: none;
+}
+
+.req-error {
+	color: red;
+	text-align: center;
+	display: none;
+}
