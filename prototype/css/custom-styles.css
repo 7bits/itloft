@@ -208,6 +208,10 @@ a:focus {
 	background-image: url(../images/skype.png);
 }
 
+.col-future {
+	margin-top: 15px;
+}
+
 @media (min-width: 992px) {
 	.col-past {
 		width: 49%;
@@ -216,19 +220,35 @@ a:focus {
 	.col-future {
 		width: 49%;
 		margin-left: 2%;
+		margin-top: 0;
 	}
 }
 
 .col-past,
 .col-future {
-	padding: 30px;
+	padding: 30px 30px 70px 30px;
 }
 
 .row-event {
-	margin-top: 15px;
-	margin-bottom: 20px;
+	padding-bottom: 25px;
+	position: relative;
 }
 
 .event-img {
 	padding-top: 15px;
+}
+
+.vertical-line {
+	border-left: 1px solid white;
+	position: absolute;
+	top: 20px;
+	bottom: -20px;
+	left: 8%;
+	z-index: -1;
+}
+
+.event-link {
+	position: absolute;
+	right: 25px;
+	bottom: 25px;
 }
