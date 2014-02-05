@@ -1,5 +1,7 @@
 <?php
     $config = parse_ini_file("./mail.config");
+    $file = "request.log";
+
     $notName=false;
     $notEmail=false;
     $notPhone=false;
@@ -26,6 +28,9 @@
     }
     else {
         $data = date("r");
+
+        file_put_contents($file, $name + " - " + $email + " - " + $phone + " - " + $data, FILE_APPEND | LOCK_EX);
+
         $result = mail($config[mail], 'IT-LOFT', "Заявка на участие: \n\n name = $name \n email = $email \n phone = $phone \n data = $data", "From: $config[mail]");
         $sendRequest = false;
 

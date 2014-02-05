@@ -1,5 +1,6 @@
 <?php
     $config = parse_ini_file("./mail.config");
+    $file = "subscription.log";
     
     $notEmailSub=false;
     $emailSub = $_POST['emailSub'];
@@ -15,6 +16,9 @@
     }
     else {
         $data = date("r");
+
+        file_put_contents($file, $emailSub + " - " + $data, FILE_APPEND | LOCK_EX);
+
         $result = mail($config[mail], 'IT-LOFT', "Подписка на события: \n\n email = $emailSub \n data = $data", "From: $config[mail]");
         $sendRequest = false;
 
