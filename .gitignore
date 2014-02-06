@@ -1,0 +1,21 @@
+# Java files #
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files #
+.idea/
+*.iml
+*.ipr
+*.iws
+*.sublime-*
+
+# Other files and folders #
+target/
+out/
+bin/
+logs/
+tmp/
+hidden.properties
+password.properties
