@@ -15,11 +15,13 @@
         echo json_encode($result);
     }
     else {
-        $data = date("r");
+        $date = date("r");
 
-        file_put_contents($file, $emailSub + " - " + $data, FILE_APPEND | LOCK_EX);
+        $f_o = fopen($file, "a");
+        fwrite($f_o, $emailSub." - ".$date."\n");
+        fclose($f_o);
 
-        $result = mail($config[mail], 'IT-LOFT', "Подписка на события: \n\n email = $emailSub \n data = $data", "From: $config[mail]");
+        $result = mail($config[mail], 'IT-LOFT', "Подписка на события: \n\n email = $emailSub \n date = $date", "From: $config[mail]");
         $sendRequest = false;
 
         if($result) {

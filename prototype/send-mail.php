@@ -27,11 +27,13 @@
         echo json_encode($result);
     }
     else {
-        $data = date("r");
+        $date = date("r");
 
-        file_put_contents($file, $name + " - " + $email + " - " + $phone + " - " + $data, FILE_APPEND | LOCK_EX);
+        $f_o = fopen($file, "a");
+        fwrite($f_o, $name." - ".$email." - ".$phone." - ".$date."\n");
+        fclose($f_o);
 
-        $result = mail($config[mail], 'IT-LOFT', "Заявка на участие: \n\n name = $name \n email = $email \n phone = $phone \n data = $data", "From: $config[mail]");
+        $result = mail($config[mail], 'IT-LOFT', "Заявка на участие: \n\n name = $name \n email = $email \n phone = $phone \n date = $date", "From: $config[mail]");
         $sendRequest = false;
 
         if($result) {
