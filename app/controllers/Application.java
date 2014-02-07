@@ -1,6 +1,8 @@
 package controllers;
 
 import models.JsonResponse;
+import models.Requester;
+import models.Subscription;
 import play.data.validation.Required;
 import play.mvc.Controller;
 
@@ -20,6 +22,10 @@ public class Application extends Controller {
             jsonResponse = new JsonResponse("FAIL", "Ошибка. Напишите ваш e-mail, пожалуйста.", null);
         }
 
+        if (!"FAIL".equals(jsonResponse.getStatus())) {
+            new Subscription(emailSub).save();
+        }
+
         renderJSON(jsonResponse);
     }
 
@@ -35,6 +41,10 @@ public class Application extends Controller {
             jsonResponse = new JsonResponse("FAIL", "Ошибка. Напишите ваш телефонный номер, пожалуйста.", null);
         } else {
             jsonResponse = new JsonResponse("SUCCESS", "Заявка отправлена.", null);
+        }
+
+        if (!"FAIL".equals(jsonResponse.getStatus())) {
+            new Requester(name, email, phone).save();
         }
 
         renderJSON(jsonResponse);

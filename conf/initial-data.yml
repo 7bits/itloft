@@ -1,0 +1,15 @@
+# Test data
+
+Subscription(sub1):
+    email:          test@subscription.com
+    createdAt:      2014-02-07
+
+Subscription(sub2):
+    email:          test2@subscription.com
+    createdAt:      2012-08-06
+
+Requester(req1):
+    name:           testname
+    email:          test@request.com
+    phone:          123456789
+    createdAt:      2014-02-07
