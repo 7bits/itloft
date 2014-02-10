@@ -19,3 +19,4 @@ logs/
 tmp/
 hidden.properties
 password.properties
+server.pid
