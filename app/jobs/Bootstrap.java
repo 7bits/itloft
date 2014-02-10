@@ -13,6 +13,7 @@ public class Bootstrap extends Job {
 
         // Check if the database is empty and we are in dev now
         if(Play.mode == Play.Mode.DEV && Subscription.count() == 0) {
+            Fixtures.deleteAllModels();
             Fixtures.loadModels("initial-data.yml");
         }
     }

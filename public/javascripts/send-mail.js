@@ -54,11 +54,15 @@ $(document).ready(function() {
         nameVal=$("#js-input-name").val();
         emailVal=$("#js-input-email").val();
         phoneVal=$("#js-input-phone").val();
+        titleVal=$("#js-input-title").val();
+        dateVal=$("#js-input-date").val();
 
         msgData = {
             name: nameVal,
             email: emailVal,
-            phone: phoneVal
+            phone: phoneVal,
+            title: titleVal,
+            date: dateVal
         }
 
         $.ajax({
