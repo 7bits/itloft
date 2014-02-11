@@ -1,6 +1,8 @@
 package models;
 
 import org.joda.time.DateTime;
+import play.data.validation.Email;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 import utils.DateTimeConverter;
 
@@ -11,7 +13,10 @@ import java.util.Date;
 @Entity
 public class Subscription extends Model {
 
+    @Email
+    @Required
     public String email;
+
     public Long createdAt;
 
     public Subscription(final String email) {

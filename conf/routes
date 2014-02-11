@@ -9,6 +9,9 @@ GET     /                                       Application.index
 POST    /subscribe                              Application.subscribe
 POST    /request                                Application.request
 
+# Import CRUD routes
+*       /admin                                  module:crud
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
