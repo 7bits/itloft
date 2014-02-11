@@ -21,33 +21,39 @@ Event(e1):
     title:          13-ый IT-Субботник
     description:    Мини-конференции, которые проходят в Омске по субботам.
     imageSrc:       /public/images/event-omskit.png
+    reference:      http://vk.com/omskit
 
 Event(e2):
     date:           1389571200
     title:          Просмотр докладов с HappyDev'13 (#3)
     description:    Собираемся в стенах IT-лофта, смотрим и обсуждаем доклады с хэппидева.
     imageSrc:       /public/images/event-happydev.png
+    reference:      https://vk.com/happyloft
 
 Event(e3):
     date:           1391212800
     title:          14-ый IT-Субботник
     description:    Мини-конференции, которые проходят в Омске по субботам.
     imageSrc:       /public/images/event-omskit.png
+    reference:      http://vk.com/omskit
 
 Event(e4):
     date:           1392422400
     title:          MarginHack Flight School
     description:    Предварительный семинар перед MarginHack.
     imageSrc:       /public/images/event-gdg.png
+    reference:      https://plus.google.com/100043900361742432344/posts/2TKz9miyHTP
 
 Event(e5):
     date:           1393632000
-    title:          ИгроДень #1
+    title:          "ИгроДень #1"
     description:    Ивент, посвященный разработке игр.
     imageSrc:       /public/images/event-gameday.png
+    reference:      https://vk.com/event64936187
 
 Event(e6):
     date:           1398643200
     title:          StartUp Сабантуй!
     description:    Стартап-экспедиция ИТ-парка по городам России и СНГ, направленная на развитие локальных стартап-сообществ.
     imageSrc:       /public/images/event-startupsabantuy.png
+    reference:      http://startupsabantuy.ru/

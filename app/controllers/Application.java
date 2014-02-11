@@ -1,19 +1,32 @@
 package controllers;
 
+import models.Event;
 import models.JsonResponse;
 import models.Requester;
 import models.Subscription;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
+import org.joda.time.DateTime;
 import play.Logger;
 import play.data.validation.Required;
 import play.libs.Mail;
 import play.mvc.Controller;
 
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
 public class Application extends Controller {
 
     public static void index() {
-        render();
+
+        long currentDate = new DateTime(new Date()).getMillis() / 1000l;
+
+        List<Event> pastEvents = Event.find("select o from Event o where date <= ? order by date desc", currentDate).fetch(3);
+        Collections.reverse(pastEvents);
+        List<Event> futureEvents = Event.find("select o from Event o where date > ? order by date", currentDate).fetch(3);
+
+        render(pastEvents, futureEvents);
     }
 
     public static void subscribe(@Required String emailSub) {
