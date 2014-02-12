@@ -29,6 +29,16 @@ public class Application extends Controller {
         render(pastEvents, futureEvents);
     }
 
+    public static void eventImg(long id) {
+
+        final Event event = Event.findById(id);
+        if (event != null && event.image != null && event.image.getUUID() != null) {
+            response.setContentTypeIfNotSet(event.image.type());
+            java.io.InputStream binaryData = event.image.get();
+            renderBinary(binaryData);
+        }
+    }
+
     public static void subscribe(@Required String emailSub) {
 
         JsonResponse jsonResponse;

@@ -119,7 +119,7 @@
                         #{list items:pastEvents, as:'pastEvent'}
                             <div class="row row-event">
                                 <div class="col-xs-2 col-entire event-img">
-                                    <img class="img-responsive img-center" src="${pastEvent.imageSrc}" alt="OmskIT">
+                                    <img class="img-responsive img-center" src="@{Application.eventImg(pastEvent.id)}" alt="Event">
                                 </div>
 
                                 #{if pastEvent != pastEvents.last()}
@@ -149,7 +149,7 @@
                         #{list items:futureEvents, as:'futureEvent'}
                             <div class="row row-event">
                                 <div class="col-xs-2 col-entire event-img">
-                                    <img class="img-responsive img-center" src="${futureEvent.imageSrc}" alt="OmskIT">
+                                    <img class="img-responsive img-center" src="@{Application.eventImg(futureEvent.id)}" alt="Event">
                                 </div>
 
                                 #{if futureEvent != futureEvents.last()}

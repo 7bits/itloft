@@ -2,6 +2,7 @@ package models;
 
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 import utils.DateTimeConverter;
 
@@ -24,16 +25,16 @@ public class Event extends Model {
     public String description;
 
     @Required
-    public String imageSrc;
+    public Blob image;
 
     @Required
     public String reference;
 
-    public Event(final Long date, final String title, final String description, final String imageSrc, final String reference) {
+    public Event(final Long date, final String title, final String description, final Blob image, final String reference) {
         this.date = date;
         this.title = title;
         this.description = description;
-        this.imageSrc = imageSrc;
+        this.image = image;
         this.reference = reference;
     }
 
@@ -41,5 +42,11 @@ public class Event extends Model {
     public String getHumanReadableDate() {
 
         return DateTimeConverter.fromLong(date);
+    }
+
+    @Transient
+    public String getImageUUID() {
+
+        return image.getUUID();
     }
 }

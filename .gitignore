@@ -18,6 +18,7 @@ bin/
 logs/
 tmp/
 modules/
+data/
 hidden.properties
 password.properties
 server.pid

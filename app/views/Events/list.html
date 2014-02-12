@@ -10,9 +10,13 @@
     </div>
 
     <div id="crudListTable">
-        #{crud.table fields:['title', 'date', 'description', 'imageSrc', 'reference']}
+        #{crud.table fields:['title', 'date', 'description', 'image', 'reference']}
             #{crud.custom 'date'}
                 ${object.getHumanReadableDate()}
+            #{/crud.custom}
+
+            #{crud.custom 'image'}
+                ${object.getImageUUID()}
             #{/crud.custom}
         #{/crud.table}
     </div>
