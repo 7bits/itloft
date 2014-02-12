@@ -19,6 +19,7 @@ logs/
 tmp/
 modules/
 data/
+db-backups/
 hidden.properties
 password.properties
 server.pid
