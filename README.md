@@ -1,5 +1,6 @@
 itloft
 ======
 
-Omsk IT-loft site
+Omsk IT-loft web-site
+
 Powered by Play framework 1.2.7
