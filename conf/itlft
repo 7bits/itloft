@@ -1,0 +1,20 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    echo "Starting itloft..."
+    /opt/play-1.2.7/play start /var/www/itloft/
+    echo "ok"
+    ;;
+  stop)
+    echo "Stopping itloft..."
+    /opt/play-1.2.7/play stop /var/www/itloft/
+    echo "done"
+    ;;
+  *)
+    echo "Usage: /etc/init.d/itloft {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
