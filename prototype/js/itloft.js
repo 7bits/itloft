@@ -1,20 +1,20 @@
 $(document).ready(function() {
 
-	if ($(".col-future").width() < $(window).width() / 2) {
-		setEqualHeight($(".col-past, .col-future"));
-	}
+  if ($(".col-future").width() < $(window).width() / 2) {
+    setEqualHeight($(".col-past, .col-future"));
+  }
 
-	$(".js-coworking-info").click(function(event) {
+  $(".js-coworking-info").click(function(event) {
 
-		event.preventDefault();
-		$(".js-coworking-box").css("display", "block");
-	});
+    event.preventDefault();
+    $(".js-coworking-box").css("display", "block");
+  });
 
-	$(".js-coworking-close").click(function(event) {
+  $(".js-coworking-close").click(function(event) {
 
-		event.preventDefault();
-		$(".js-coworking-box").css("display", "none");
-	});
+    event.preventDefault();
+    $(".js-coworking-box").css("display", "none");
+  });
 
     $(".js-social-logo").mouseover(function() {
 
@@ -31,22 +31,22 @@ $(document).ready(function() {
 
 $(window).resize(function() {
 
-	if ($(".col-future").width() < $(window).width() / 2) {
-		setEqualHeight($(".col-past, .col-future"));
-	} else {
-		$(".col-future").height("auto");
-		$(".col-past").height("auto");
-	}
+  if ($(".col-future").width() < $(window).width() / 2) {
+    setEqualHeight($(".col-past, .col-future"));
+  } else {
+    $(".col-future").height("auto");
+    $(".col-past").height("auto");
+  }
 });
 
 function setEqualHeight(columns) {
 
-	var tallestcolumn = 0;
-	columns.each(function() {
-		currentHeight = $(this).height();
-		if(currentHeight > tallestcolumn) {
-			tallestcolumn = currentHeight;
-		}
-	});
-	columns.height(tallestcolumn);
+  var tallestcolumn = 0;
+  columns.each(function() {
+    currentHeight = $(this).height();
+    if(currentHeight > tallestcolumn) {
+      tallestcolumn = currentHeight;
+    }
+  });
+  columns.height(tallestcolumn);
 }

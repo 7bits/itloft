@@ -17,6 +17,7 @@ out/
 bin/
 logs/
 tmp/
+test-result/
 modules/
 data/
 db-backups/

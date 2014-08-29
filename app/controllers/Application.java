@@ -4,17 +4,21 @@ import models.Event;
 import models.JsonResponse;
 import models.Requester;
 import models.Subscription;
+import models.forms.RequesterForm;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import org.joda.time.DateTime;
 import play.Logger;
-import play.data.validation.Required;
+import play.data.validation.*;
+import play.data.validation.Error;
 import play.libs.Mail;
 import play.mvc.Controller;
+import utils.ValidationUtils;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class Application extends Controller {
 
@@ -29,7 +33,7 @@ public class Application extends Controller {
         render(pastEvents, futureEvents);
     }
 
-    public static void eventImg(long id) {
+    public static void eventImg(final long id) {
 
         final Event event = Event.findById(id);
         if (event != null && event.image != null && event.image.getUUID() != null) {
@@ -39,7 +43,7 @@ public class Application extends Controller {
         }
     }
 
-    public static void subscribe(@Required String emailSub) {
+    public static void subscribe(@Required final String emailSub) {
 
         JsonResponse jsonResponse;
 
@@ -69,23 +73,30 @@ public class Application extends Controller {
         renderJSON(jsonResponse);
     }
 
-    public static void request(@Required String name, @Required String email, @Required String phone, @Required String title, @Required String date) {
+    public static void request(@Valid final RequesterForm requesterForm) {
 
         JsonResponse jsonResponse;
 
-        if (name == null || name.isEmpty()) {
-            jsonResponse = new JsonResponse("FAIL", "Ошибка. Напишите ваше имя, пожалуйста.", null);
-        } else if (email == null || email.isEmpty()) {
-            jsonResponse = new JsonResponse("FAIL", "Ошибка. Напишите ваш e-mail, пожалуйста.", null);
-        } else if (phone == null || phone.isEmpty()) {
-            jsonResponse = new JsonResponse("FAIL", "Ошибка. Напишите ваш телефонный номер, пожалуйста.", null);
+        if(validation.hasErrors()) {
+            final Map<String, List<Error>> errors = validation.errorsMap();
+            String formName = "requesterForm";
+            jsonResponse = new JsonResponse(
+                    "FAIL",
+                    ValidationUtils.extractMainValidationError(errors, formName),
+                    ValidationUtils.extractFieldValidationErrors(errors, formName));
         } else {
             jsonResponse = new JsonResponse("SUCCESS", "Заявка отправлена.", null);
         }
 
         Requester requester;
         if (!"FAIL".equals(jsonResponse.getStatus())) {
-            requester = new Requester(name, email, phone, title, date).save();
+            requester = new Requester(
+                    requesterForm.name,
+                    requesterForm.email,
+                    requesterForm.phone,
+                    requesterForm.title,
+                    requesterForm.date
+            ).save();
 
             SimpleEmail simpleEmail = new SimpleEmail();
             try {
@@ -94,11 +105,11 @@ public class Application extends Controller {
                 simpleEmail.addTo("at@7bits.it");
                 simpleEmail.setSubject("IT-LOFT");
                 simpleEmail.setMsg(
-                    "Заявка на участие:\n\n  name: " + name
-                        + "\n  email: " + email
-                        + "\n  phone: " + phone
-                        + "\n  title: " + title
-                        + "\n  date: " + date
+                    "Заявка на участие:\n\n  name: " + requester.name
+                        + "\n  email: " + requester.email
+                        + "\n  phone: " + requester.phone
+                        + "\n  title: " + requester.title
+                        + "\n  date: " + requester.date
                         + "\n  createdAt: " + requester.getHumanReadableCreatedAtDate()
                 );
             } catch (EmailException e) {

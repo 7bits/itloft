@@ -49,20 +49,15 @@ $(document).ready(function() {
     $("#js-submit").bind("click", function(e) {
 
         e.preventDefault();
-        $("#js-response").css("display", "none");
-
-        nameVal=$("#js-input-name").val();
-        emailVal=$("#js-input-email").val();
-        phoneVal=$("#js-input-phone").val();
-        titleVal=$("#js-input-title").val();
-        dateVal=$("#js-input-date").val();
-
-        msgData = {
-            name: nameVal,
-            email: emailVal,
-            phone: phoneVal,
-            title: titleVal,
-            date: dateVal
+        var $jsResponse = $("#js-response");
+        $jsResponse.css("display", "none");
+        var $form = $("#js-request-form");
+        $form.find("[id^='js-error-']").html("");
+        $inputs = $form.find("input");
+        var msgData = {};
+        for(var i = 0; i < $inputs.length; i++) {
+            var inputName = $inputs.eq(i).attr("name");
+            msgData['requesterForm.' + inputName] = $inputs.eq(i).val();
         }
 
         $.ajax({
@@ -74,20 +69,23 @@ $(document).ready(function() {
                 if (response.status == "SUCCESS") {
                     $("#js-response").css("color", "green");
                     $("#js-request-form")[0].reset();
+                    setTimeout(function() {
+                      $("#js-response").css("display", "none");
+                    }, 5000);
                 } else {
+                    var errors = response.errors;
+                    for (var key in errors) {
+                      $form.find("#js-error-" + key).html(errors[key]);
+                    }
                     $("#js-response").css("color", "red");
                 }
-                $("#js-response").html(response.message);
-                $("#js-response").css("display", "block");
-
-                setTimeout(function() {
-                    $("#js-response").css("display", "none");
-                }, 5000);
+                $jsResponse.html(response.message);
+                $jsResponse.css("display", "block");
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $("#js-response").css("color", "red");
-                $("#js-response").html(textStatus + ": " + errorThrown + "; see console logs");
-                $("#js-response").css("display", "block");
+                $jsResponse.css("color", "red");
+                $jsResponse.html(textStatus + ": " + errorThrown);
+                $jsResponse.css("display", "block");
 
                 console.log(jqXHR);
                 console.log(jqXHR.responseText);

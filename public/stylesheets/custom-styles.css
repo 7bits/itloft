@@ -122,6 +122,10 @@ a:focus {
 	color: white;
 }
 
+.form-error {
+    color: red;
+}
+
 .form-control:-moz-placeholder {
   color: #1a3856;
 }

@@ -1,27 +1,29 @@
 package models;
 
+import java.util.Map;
+
 /**
  * POJO class for server json response representation.
  * Status - SUCCESS or FAIL.
- * Result - an Object with some result information, for example a Map with form fields errors.
+ * Result - an Object with some errors information, for example a Map with form fields errors.
  */
 public class JsonResponse {
 
     private String status;
     private String message;
-    private Object result;
+    private Map<String, String> errors;
 
-    public JsonResponse(final String status, final String message, final Object result) {
+    public JsonResponse(final String status, final String message, final Map<String, String> result) {
         this.status = status;
         this.message = message;
-        this.result = result;
+        this.errors = result;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
 
@@ -33,11 +35,11 @@ public class JsonResponse {
         this.message = message;
     }
 
-    public Object getResult() {
-        return result;
+    public Map<String, String> getErrors() {
+        return errors;
     }
 
-    public void setResult(Object result) {
-        this.result = result;
+    public void setErrors(final Map<String, String> errors) {
+        this.errors = errors;
     }
 }

@@ -1,3 +1,6 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+validation.object=Пожалуйста, исправьте ошибки
+validation.required=Заполните, пожалуйста, это поле
+validation.email=Некорректный email-адрес
