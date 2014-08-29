@@ -217,32 +217,54 @@
                 <div class="col-md-6 col-md-offset-3"></div>
             </div>
 
-            <form id="js-request-form" action="@{Application.request()}" method="POST">
+            <form id="js-request-form" action="@{Application.request()}" enctype="multipart/form-data" method="POST">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="form-group">
-                            <input type="text" class="form-control input-loft text-20 full-height" name="name" placeholder="Как вас зовут?">
-                            <div class="form-error" id="js-error-name"></div>
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.name" placeholder="Как вас зовут?">
+                            <div class="form-error js-error-name"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="email" class="form-control input-loft text-20 full-height" name="email" placeholder="Ваш e-mail">
-                            <div class="form-error" id="js-error-email"></div>
+                            <input type="email" class="form-control input-loft text-20 full-height" name="requesterForm.email" placeholder="Ваш e-mail">
+                            <div class="form-error js-error-email"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control input-loft text-20 full-height" name="phone" placeholder="Ваш телефон">
-                            <div class="form-error" id="js-error-phone"></div>
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.phone" placeholder="Ваш телефон">
+                            <div class="form-error js-error-phone"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control input-loft text-20 full-height" name="title" placeholder="Название мероприятия">
-                            <div class="form-error" id="js-error-title"></div>
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.title" placeholder="Название мероприятия">
+                            <div class="form-error js-error-title"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control input-loft text-20 full-height" name="date" placeholder="Дата проведения мероприятия">
-                            <div class="form-error" id="js-error-date"></div>
+                            <input type="text" class="form-control input-loft text-20 full-height input-half form-datetime" name="requesterForm.startDate" placeholder="Начало мероприятия" readonly>
+                            <input type="text" class="form-control input-loft text-20 full-height input-half form-datetime to-right" name="requesterForm.endDate" placeholder="Окончание мероприятия" readonly>
+                            <div class="form-error js-error-startDate js-error-endDate"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control input-loft text-20 full-height" name="requesterForm.description" rows="5" placeholder="Описание мероприятия"></textarea>
+                            <div class="form-error js-error-description"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="js-file-path form-control input-loft text-20 full-height" placeholder="Логотип мероприятия" readonly />
+                            <div class="file-upload btn btn-primary">
+                                <span>Выберите файл</span>
+                                <input class="js-file-browse" type="file" name="requesterForm.logo" class="upload" />
+                            </div>
+                            <div class="text-12 input-note">* 100x100 пикселей, прозрачный фон</div>
+                            <div class="form-error js-error-logo"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.link" placeholder="Ссылка на мероприятие">
+                            <div class="text-12 input-note">** группа VK, страница в G+, регистрация</div>
+                            <div class="form-error js-error-link"></div>
                         </div>
 
                         <button type="submit" class="btn btn-loft text-22 full-width" id="js-submit">Оставить заявку</button>

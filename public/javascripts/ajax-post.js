@@ -52,19 +52,18 @@ $(document).ready(function() {
         var $jsResponse = $("#js-response");
         $jsResponse.css("display", "none");
         var $form = $("#js-request-form");
-        $form.find("[id^='js-error-']").html("");
-        $inputs = $form.find("input");
-        var msgData = {};
-        for(var i = 0; i < $inputs.length; i++) {
-            var inputName = $inputs.eq(i).attr("name");
-            msgData['requesterForm.' + inputName] = $inputs.eq(i).val();
-        }
+        $form.find("[class*='js-error-']").html("");
+//        $inputs = $form.find(":input");
+//        var msgData = {};
+//        for(var i = 0; i < $inputs.length; i++) {
+//            var inputName = $inputs.eq(i).attr("name");
+//            msgData['requesterForm.' + inputName] = $inputs.eq(i).val();
+//        }
 
-        $.ajax({
+        $form.ajaxSubmit({
             url: requestUrl,
             type: "POST",
             dataType: "json",
-            data: msgData,
             success: function(response) {
                 if (response.status == "SUCCESS") {
                     $("#js-response").css("color", "green");
@@ -75,7 +74,7 @@ $(document).ready(function() {
                 } else {
                     var errors = response.errors;
                     for (var key in errors) {
-                      $form.find("#js-error-" + key).html(errors[key]);
+                      $form.find(".js-error-" + key).html(errors[key]);
                     }
                     $("#js-response").css("color", "red");
                 }

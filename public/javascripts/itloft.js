@@ -27,6 +27,20 @@ $(document).ready(function() {
         var src = $(this).attr("src").replace("-2.png", ".png");
         $(this).attr("src", src);
     });
+
+    // Initializes datetimepicker
+    $(".form-datetime").datetimepicker({
+        format: "yyyy-mm-dd hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 5,
+        language: 'ru'
+    });
+
+    // Fills file path field for input files elements
+    $(".js-file-browse").on("change", function() {
+      $(this).parent().parent().find(".js-file-path").val(this.value);
+    });
 });
 
 $(window).resize(function() {

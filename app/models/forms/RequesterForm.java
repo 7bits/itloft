@@ -1,17 +1,19 @@
 package models.forms;
 
-import models.Requester;
-import org.joda.time.DateTime;
+import play.data.binding.As;
 import play.data.validation.Email;
+import play.data.validation.Phone;
 import play.data.validation.Required;
+import play.data.validation.URL;
 import play.db.jpa.Model;
-import utils.DateTimeConverter;
 
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import java.io.File;
 import java.util.Date;
 
-public class RequesterForm {
+/**
+ * Form for Request Event
+ */
+public class RequesterForm extends Model {
 
     @Required
     public String name;
@@ -20,6 +22,7 @@ public class RequesterForm {
     @Required
     public String email;
 
+    @Phone
     @Required
     public String phone;
 
@@ -27,5 +30,18 @@ public class RequesterForm {
     public String title;
 
     @Required
-    public String date;
+    public Date startDate;
+
+    @Required
+    public Date endDate;
+
+    @Required
+    public String description;
+
+    @Required
+    public File logo;
+
+    @URL
+    @Required
+    public String link;
 }

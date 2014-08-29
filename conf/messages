@@ -4,3 +4,4 @@
 validation.object=Пожалуйста, исправьте ошибки
 validation.required=Заполните, пожалуйста, это поле
 validation.email=Некорректный email-адрес
+validation.url=Некорректный URL

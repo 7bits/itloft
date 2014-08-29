@@ -17,7 +17,10 @@ public class ValidationUtils {
      * @param formName     Form name
      * @return map with field validation errors
      */
-    public static Map<String, String> extractFieldValidationErrors(final Map<String, List<Error>> errorsMap, final String formName) {
+    public static Map<String, String> extractFieldValidationErrors(
+            final Map<String, List<Error>> errorsMap,
+            final String formName
+    ) {
 
         if (errorsMap == null || errorsMap.size() == 0) {
             return null;
@@ -53,6 +56,10 @@ public class ValidationUtils {
             return null;
         }
         List<Error> mainError = errorsMap.get(formName);
-        return mainError.get(0).toString();
+        if (mainError != null) {
+            return mainError.get(0).toString();
+        } else {
+            return null;
+        }
     }
 }

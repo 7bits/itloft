@@ -15,6 +15,7 @@ import play.libs.Mail;
 import play.mvc.Controller;
 import utils.ValidationUtils;
 
+import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -85,17 +86,19 @@ public class Application extends Controller {
                     ValidationUtils.extractMainValidationError(errors, formName),
                     ValidationUtils.extractFieldValidationErrors(errors, formName));
         } else {
-            jsonResponse = new JsonResponse("SUCCESS", "Заявка отправлена.", null);
-        }
 
-        Requester requester;
-        if (!"FAIL".equals(jsonResponse.getStatus())) {
+            jsonResponse = new JsonResponse("SUCCESS", "Заявка отправлена.", null);
+            Requester requester;
             requester = new Requester(
                     requesterForm.name,
                     requesterForm.email,
                     requesterForm.phone,
                     requesterForm.title,
-                    requesterForm.date
+                    requesterForm.startDate,
+                    requesterForm.endDate,
+                    requesterForm.description,
+                    requesterForm.logo,
+                    requesterForm.link
             ).save();
 
             SimpleEmail simpleEmail = new SimpleEmail();
@@ -109,7 +112,7 @@ public class Application extends Controller {
                         + "\n  email: " + requester.email
                         + "\n  phone: " + requester.phone
                         + "\n  title: " + requester.title
-                        + "\n  date: " + requester.date
+                        + "\n  start date: " + requester.startDate
                         + "\n  createdAt: " + requester.getHumanReadableCreatedAtDate()
                 );
             } catch (EmailException e) {
