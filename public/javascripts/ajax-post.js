@@ -53,12 +53,6 @@ $(document).ready(function() {
         $jsResponse.css("display", "none");
         var $form = $("#js-request-form");
         $form.find("[class*='js-error-']").html("");
-//        $inputs = $form.find(":input");
-//        var msgData = {};
-//        for(var i = 0; i < $inputs.length; i++) {
-//            var inputName = $inputs.eq(i).attr("name");
-//            msgData['requesterForm.' + inputName] = $inputs.eq(i).val();
-//        }
 
         $form.ajaxSubmit({
             url: requestUrl,

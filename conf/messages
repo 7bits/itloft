@@ -5,3 +5,5 @@ validation.object=Пожалуйста, исправьте ошибки
 validation.required=Заполните, пожалуйста, это поле
 validation.email=Некорректный email-адрес
 validation.url=Некорректный URL
+validation.future=Дата не может быть прошедшей
+validation.before=Дата окончания не может быть раньше даты начала

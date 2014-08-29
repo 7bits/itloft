@@ -32,6 +32,7 @@ $(document).ready(function() {
     $(".form-datetime").datetimepicker({
         format: "yyyy-mm-dd hh:ii",
         autoclose: true,
+        startDate: new Date(),
         todayBtn: true,
         minuteStep: 5,
         language: 'ru'
