@@ -30,7 +30,7 @@ application.secret=ZcVHNkq8fFdSDNzjRj2d6EFPmdEsoJQW4Igpkee8FkrPy1wRU2GCjBZOVeuFv
 
 # Date format
 # ~~~~~
-date.format=yyyy-MM-dd
+date.format=yyyy-MM-dd HH:mm
 # date.format.fr=dd/MM/yyyy
 
 # Server configuration

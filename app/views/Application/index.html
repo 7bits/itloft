@@ -65,35 +65,24 @@
     </div>
 
     <!-- photos -->
-    <div class="row row-section">
-        <div class="col-xs-10 col-xs-offset-1 col-md-5 col-entire">
-            <img class="img-responsive bordered full-width" src="@{'/public/images/complex1.png'}" alt="Complex 1">
-            <div class="image-caption text-center">
-                <span>У нас вам всегда улыбнутся! :)</span>
-            </div>
-        </div>
-
-        <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-0">
-            <div class="row">
-                <div class="col-xs-6 col-entire">
-                    <img class="img-responsive bordered full-width" src="@{'/public/images/complex2.png'}" alt="Complex 2">
-                </div>
-
-                <div class="col-xs-6 col-entire">
-                    <img class="img-responsive bordered full-width" src="@{'/public/images/complex3.png'}" alt="Complex 3">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-6 col-entire">
-                    <img class="img-responsive bordered full-width" src="@{'/public/images/complex4.png'}" alt="Complex 4">
-                </div>
-
-                <div class="col-xs-6 col-entire">
-                    <img class="img-responsive bordered full-width" src="@{'/public/images/complex5.png'}" alt="Complex 5">
-                </div>
-            </div>
-        </div>
+    <div class="row row-section col-md-10 col-md-offset-1">
+        <ul class="bxslider">
+            <li><img src="@{'/public/images/carousel/image_01.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_02.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_03.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_04.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_05.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_06.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_07.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_09.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_10.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_11.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_12.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_13.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_14.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_15.jpg'}" /></li>
+            <li><img src="@{'/public/images/carousel/image_16.jpg'}" /></li>
+        </ul>
     </div>
 
     <!-- events -->
@@ -217,27 +206,54 @@
                 <div class="col-md-6 col-md-offset-3"></div>
             </div>
 
-            <form id="js-request-form" action="@{Application.request()}" method="POST">
+            <form id="js-request-form" action="@{Application.request()}" enctype="multipart/form-data" method="POST">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="form-group">
-                            <input type="text" class="form-control input-loft text-20 full-height" id="js-input-name" placeholder="Как вас зовут?">
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.name" placeholder="Как вас зовут?">
+                            <div class="form-error js-error-name"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="email" class="form-control input-loft text-20 full-height" id="js-input-email" placeholder="Ваш e-mail">
+                            <input type="email" class="form-control input-loft text-20 full-height" name="requesterForm.email" placeholder="Ваш e-mail">
+                            <div class="form-error js-error-email"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="tel" class="form-control input-loft text-20 full-height" id="js-input-phone" placeholder="Ваш телефон">
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.phone" placeholder="Ваш телефон">
+                            <div class="form-error js-error-phone"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control input-loft text-20 full-height" id="js-input-title" placeholder="Название мероприятия">
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.title" placeholder="Название мероприятия">
+                            <div class="form-error js-error-title"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control input-loft text-20 full-height" id="js-input-date" placeholder="Дата проведения мероприятия">
+                            <input type="text" class="form-control input-loft text-20 full-height input-half form-datetime" name="requesterForm.startDate" placeholder="Начало мероприятия" readonly>
+                            <input type="text" class="form-control input-loft text-20 full-height input-half form-datetime to-right" name="requesterForm.endDate" placeholder="Окончание мероприятия" readonly>
+                            <div class="form-error js-error-startDate js-error-endDate"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control input-loft text-20 full-height" name="requesterForm.description" rows="5" placeholder="Описание мероприятия"></textarea>
+                            <div class="form-error js-error-description"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="js-file-path form-control input-loft text-20 full-height" placeholder="Логотип мероприятия" readonly />
+                            <div class="file-upload btn btn-primary">
+                                <span>Выберите файл</span>
+                                <input class="js-file-browse" type="file" name="requesterForm.logo" class="upload" />
+                            </div>
+                            <div class="text-12 input-note">* 100x100 пикселей, прозрачный фон</div>
+                            <div class="form-error js-error-logo"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.link" placeholder="Ссылка на мероприятие">
+                            <div class="text-12 input-note">** группа VK, страница в G+, регистрация</div>
+                            <div class="form-error js-error-link"></div>
                         </div>
 
                         <button type="submit" class="btn btn-loft text-22 full-width" id="js-submit">Оставить заявку</button>

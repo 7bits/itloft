@@ -116,10 +116,56 @@ a:focus {
 
 .input-loft {
 	border-radius: 0;
-	background-color: #2c4d6e;
-	border: transparent;
-	padding: 8px 15px;
-	color: white;
+    background-color: #2c4d6e;
+    border: transparent;
+    padding: 8px 15px;
+    color: white;
+}
+
+.input-loft[readonly] {
+    background-color: #2c4d6e;
+    color: white;
+}
+
+.input-half {
+    width: 49%;
+    display: inline-block;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    margin: -39px 6px;
+    float:right;
+    border-radius: 0;
+    color: #2c4d6e;
+    background-color: #193754;
+    border-color: #193754;
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.to-right {
+    float: right;
+}
+
+.input-note {
+    color: #54779d;
+}
+
+.form-error {
+    color: red;
+    font-size: 16px;
 }
 
 .form-control:-moz-placeholder {
