@@ -7,3 +7,6 @@ validation.email=Некорректный email-адрес
 validation.url=Некорректный URL
 validation.future=Дата не может быть прошедшей
 validation.before=Дата окончания не может быть раньше даты начала
+validation.not-png-or-gif=Изображение должно быть в формате PNG или GIF
+validation.image-size-100-100=Изображение должно быть размером %2$sx%3$s пикселей
+validation.image-transparency=Изображение должно быть с прозрачностью

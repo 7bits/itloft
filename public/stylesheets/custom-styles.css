@@ -165,6 +165,7 @@ a:focus {
 
 .form-error {
     color: red;
+    font-size: 16px;
 }
 
 .form-control:-moz-placeholder {
