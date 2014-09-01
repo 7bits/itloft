@@ -16,32 +16,35 @@ $(document).ready(function() {
     $(".js-coworking-box").css("display", "none");
   });
 
-    $(".js-social-logo").mouseover(function() {
+  $(".js-social-logo").mouseover(function() {
 
-        var src = $(this).attr("src").match(/[^\.]+/) + "-2.png";
-        $(this).attr("src", src);
-    });
+      var src = $(this).attr("src").match(/[^\.]+/) + "-2.png";
+      $(this).attr("src", src);
+  });
 
-    $(".js-social-logo").mouseout(function() {
+  $(".js-social-logo").mouseout(function() {
 
-        var src = $(this).attr("src").replace("-2.png", ".png");
-        $(this).attr("src", src);
-    });
+      var src = $(this).attr("src").replace("-2.png", ".png");
+      $(this).attr("src", src);
+  });
 
-    // Initializes datetimepicker
-    $(".form-datetime").datetimepicker({
-        format: "yyyy-mm-dd hh:ii",
-        autoclose: true,
-        startDate: new Date(),
-        todayBtn: true,
-        minuteStep: 5,
-        language: 'ru'
-    });
+  // Initializes datetimepicker
+  $(".form-datetime").datetimepicker({
+      format: "yyyy-mm-dd hh:ii",
+      autoclose: true,
+      startDate: new Date(),
+      todayBtn: true,
+      minuteStep: 5,
+      language: 'ru'
+  });
 
-    // Fills file path field for input files elements
-    $(".js-file-browse").on("change", function() {
-      $(this).parent().parent().find(".js-file-path").val(this.value);
-    });
+  // Fills file path field for input files elements
+  $(".js-file-browse").on("change", function() {
+    $(this).parent().parent().find(".js-file-path").val(this.value);
+  });
+
+  // Activates BX Slider
+  $('.bxslider').bxSlider();
 });
 
 $(window).resize(function() {
