@@ -14,6 +14,12 @@
             #{crud.custom 'createdAt'}
                 ${object.getHumanReadableCreatedAtDate()}
             #{/crud.custom}
+            #{crud.custom 'startDate'}
+                ${object.getHumanReadableStartDate()}
+            #{/crud.custom}
+            #{crud.custom 'endDate'}
+                ${object.getHumanReadableEndDate()}
+            #{/crud.custom}
         #{/crud.table}
     </div>
 

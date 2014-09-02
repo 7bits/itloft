@@ -88,4 +88,18 @@ public class Requester extends Model {
 
         return DateTimeConverter.fromLong(createdAt);
     }
+
+
+    @Transient
+    public String getHumanReadableStartDate() {
+
+        return DateTimeConverter.fromLong(startDate);
+    }
+
+
+    @Transient
+    public String getHumanReadableEndDate() {
+
+        return DateTimeConverter.fromLong(endDate);
+    }
 }

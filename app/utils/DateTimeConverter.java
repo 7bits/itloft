@@ -1,6 +1,8 @@
 package utils;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 public class DateTimeConverter {
 
@@ -27,8 +29,9 @@ public class DateTimeConverter {
             result.append(RU_MONTHS[dateTime.getMonthOfYear() - 1]);
             result.append(" ");
             result.append(dateTime.year().getAsText());
-//            result.append(" ");
-//            result.append("года");
+            result.append(" ");
+            DateTimeFormatter timeFormat = DateTimeFormat.forPattern("kk:mm");
+            result.append(timeFormat.print(dateTime));
 
             return result.toString();
         }
