@@ -325,3 +325,42 @@ a:focus {
     text-align: center;
     display: none;
 }
+
+.history-container {
+    display: table;
+}
+
+.history-timeline {
+    border-bottom:1px solid #ffffff;
+    background-color: #193754;
+    text-align: center;
+}
+
+.history-timeline:after {
+    background: #ffffff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: -5px 50%;
+}
+
+.history-active .history-timeline:after {
+    background: #ffa328;
+    width: 14px;
+    height: 14px;
+    margin: -7px 50%;
+}
+
+.history-column {
+    display: table-cell;
+    vertical-align: top;
+    float: none;
+}
+
+.history-event {
+    padding: 0 30px;
+}
+
+.history-active {
+    background-color: #132940;
+}

@@ -123,4 +123,13 @@ public class Application extends Controller {
 
         renderJSON(jsonResponse);
     }
+
+    public static void events() {
+
+        long currentDate = new DateTime(new Date()).monthOfYear().getDateTime().getMillis() / 1000l;
+
+//        List<Event> events = Event.find("select o from Event o where date <= ? order by date desc", currentDate).fetch(3);
+
+        render();
+    }
 }

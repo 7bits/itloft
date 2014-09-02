@@ -43,168 +43,123 @@
         </div>
     </div>
 
-    <!-- description -->
-    <div class="row row-section">
-        <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-1 col-entire">
-                        <span class="intro-32">
-                            ОМСКИЙ <span class="orange">IT&#8209;ЛОФТ*</span> &ndash;<br>
-                            ПРЕКРАСНОЕ МЕСТО ДЛЯ ПРОВЕДЕНИЯ ИТ&#8209;МЕРОПРИЯТИЙ!<br>
-                        </span>
-            <br>
-            <br>
-            <span>* Лофт (от англ. &laquo;чердак&raquo;) &ndash; жилое помещение либо</span><br>
-            <span>художественная мастерская, расположенная в здании</span><br>
-            <span>индустриального типа.</span>
-            <br>
-            <br>
-        </div>
-
-        <div class="col-md-4">
-            <img class="img-responsive img-center" src="@{'/public/images/description.png'}" alt="Description">
-        </div>
-    </div>
-
-    <!-- photos -->
-    <div class="row row-section col-md-10 col-md-offset-1">
-        <ul class="bxslider">
-            <li><img src="@{'/public/images/carousel/image_01.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_02.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_03.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_04.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_05.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_06.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_07.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_09.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_10.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_11.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_12.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_13.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_14.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_15.jpg'}" /></li>
-            <li><img src="@{'/public/images/carousel/image_16.jpg'}" /></li>
-        </ul>
-    </div>
-
     <!-- events -->
     <div class="row row-section">
         <div class="col-xs-10 col-xs-offset-1">
             <p><span class="intro-40 orange">МЕРОПРИЯТИЯ В IT-ЛОФТ</span></p>
 
-            <div class="row">
-                <div class="col-md-6 bordered col-past">
-                    <span class="text-30">Прошедшие</span>
-                    <br>
-                    <br>
-
-                    #{if pastEvents}
-                        #{list items:pastEvents, as:'pastEvent'}
-                            <div class="row row-event">
-                                <div class="col-xs-2 col-entire event-img">
-                                    <img class="img-responsive img-center" src="@{Application.eventImg(pastEvent.id)}" alt="Event">
-                                </div>
-
-                                #{if pastEvent != pastEvents.last()}
-                                    <div class="vertical-line"></div>
-                                #{/if}
-
-                                <div class="col-xs-10 col-entire">
-                                    <span class="text-12">${pastEvent.humanReadableDate}</span><br>
-                                    <p><a href="${pastEvent.reference}" target="_blank">${pastEvent.title}</a></p>
-                                    <div class="text-15">${pastEvent.description}</div>
-                                </div>
-                            </div>
-                        #{/list}
-                    #{/if}
-
-                    <div class="text-right event-link">
-                        <a href="/events" id="metrika-calendar">Все мероприятия</a>
+            <div class="row history-container">
+                <div class="col-md-4 history-column">
+                    <div class="history-timeline row">
+                        Июль
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=21" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">2 августа 2014 24:00</span><br>
+                            <p><a href="http://vk.com/omskit" target="_blank">20-й ИТ-субботник</a></p>
+                            <div class="text-15">Мини-конференции, которые проходят в Омске по субботам. В этот раз - JavaScript!</div>
+                        </div>
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=20" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">2 августа 2014 03:00</span><br>
+                            <p><a href="https://vk.com/android_omsk" target="_blank">Android Development Barcamp</a></p>
+                            <div class="text-15">Android Barcamp - первое мероприятие Android Developers Omsk.
+                                Никаких скучных докладов, только обсуждение самых горячих и интересных тем! Здесь можно обсудить последние новинки в мире Android, спорные моменты в разработке, спросить совета у профессионалов. Любой желающий создает программу.</div>
+                        </div>
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=26" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">23 августа 2014 05:00</span><br>
+                            <p><a href="http://old48.com/" target="_blank">Omsky Ludum dare #30</a></p>
+                            <div class="text-15">Командное соревнование по скоростной разработке игр. Самое многочисленное сборище гейм-девелоперов в России, рекорд для закрытых помещений!</div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="col-md-6 bordered col-future">
-                    <span class="text-30">Будущие</span>
-                    <br>
-                    <br>
-
-                    #{if futureEvents}
-                        #{list items:futureEvents, as:'futureEvent'}
-                            <div class="row row-event">
-                                <div class="col-xs-2 col-entire event-img">
-                                    <img class="img-responsive img-center" src="@{Application.eventImg(futureEvent.id)}" alt="Event">
-                                </div>
-
-                                #{if futureEvent != futureEvents.last()}
-                                    <div class="vertical-line"></div>
-                                #{/if}
-
-                                <div class="col-xs-10 col-entire">
-                                    <span class="text-12">${futureEvent.humanReadableDate}</span><br>
-                                    <p><a href="${futureEvent.reference}" target="_blank">${futureEvent.title}</a></p>
-                                    <div class="text-15">${futureEvent.description}</div>
-                                </div>
-                            </div>
-                        #{/list}
-                    #{/if}
-
-                    <div class="text-right event-link">
-                        <a href="#event" id="metrika-rent-label">Проведи свое мероприятие!</a>
+                <div class="col-md-4 history-active history-column">
+                    <div class="history-timeline row">
+                        Август
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=25" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">6 сентября 2014 07:00</span><br>
+                            <p><a href="http://vk.com/omskit" target="_blank">21-й ИТ-субботник</a></p>
+                            <div class="text-15">Мини-конференции, которые проходят в Омске по субботам. В этот раз - управление проектами и людьми.</div>
+                        </div>
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=24" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">21 сентября 2014 13:00</span><br>
+                            <p><a href="http://vk.com/event64936187" target="_blank">ИгроДень #3: Мероприятие, посвященное разработке игр</a></p>
+                            <div class="text-15">Что вас ждёт? Доклады от омских геймдевелоперов, приятная атмосфера и гостеприимность ИТ-лофта. Общение в неформальной обстановке, обмен передовым опытом - профит для всех! Welcome!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 history-column">
+                    <div class="row history-timeline">
+                        Сентябрь
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=26" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">23 августа 2014 05:00</span><br>
+                            <p><a href="http://old48.com/" target="_blank">Omsky Ludum dare #30</a></p>
+                            <div class="text-15">Командное соревнование по скоростной разработке игр. Самое многочисленное сборище гейм-девелоперов в России, рекорд для закрытых помещений!</div>
+                        </div>
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=20" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">2 августа 2014 03:00</span><br>
+                            <p><a href="https://vk.com/android_omsk" target="_blank">Android Development Barcamp</a></p>
+                            <div class="text-15">Android Barcamp - первое мероприятие Android Developers Omsk.
+                                Никаких скучных докладов, только обсуждение самых горячих и интересных тем! Здесь можно обсудить последние новинки в мире Android, спорные моменты в разработке, спросить совета у профессионалов. Любой желающий создает программу.</div>
+                        </div>
+                    </div>
+                    <div class="row row-event history-event">
+                        <div class="col-xs-2 col-entire event-img">
+                            <img class="img-responsive img-center" src="http://itlft.ru/application/eventimg?id=25" alt="Event">
+                        </div>
+                        <div class="col-xs-10 col-entire">
+                            <span class="text-12">6 сентября 2014 07:00</span><br>
+                            <p><a href="http://vk.com/omskit" target="_blank">21-й ИТ-субботник</a></p>
+                            <div class="text-15">Мини-конференции, которые проходят в Омске по субботам. В этот раз - управление проектами и людьми.</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <p><span class="text-24"><br>Чтобы всегда вовремя узнавать о новых событиях в лофте, оставьте свой e-mail</span></p>
-
-            <form id="js-subscription-form" action="@{Application.subscribe()}" method="POST">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-1">
-                        <div class="form-group">
-                            <input type="email" class="form-control input-loft text-20 full-height" id="js-input-email-sub" placeholder="Ваш e-mail">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-loft text-22" id="js-submit-sub">Подписаться</button>
-                    </div>
-                </div>
-
-                <div class="response" id="js-response-sub"></div>
-            </form>
-
-            <span class="text-24"><br>А также следите за нами в <a href="http://vk.com/itloftomsk" target="_blank" id="metrika-vk-link">группе Вконтакте</a> и в <a href="https://twitter.com/_itloft" target="_blank" id="metrika-tw-link">Твиттере</a></span>
         </div>
     </div>
-
     <!-- rent -->
     <a name="event"></a>
     <div class="row row-section">
         <div class="col-xs-10 col-xs-offset-1">
+
             <span class="intro-40 orange">ПРОВЕДЕНИЕ МЕРОПРИЯТИЙ</span>
-
-            <div class="row">
-                <div class="col-md-7">
-                    <span>Для вас мы можем предоставить:</span>
-                    <br>
-                    <br>
-                    <ul class="rent-info">
-                        <li>Проектор</li>
-                        <li>Колонки</li>
-                        <li>Большой белый экран или много белых стен</li>
-                        <li>Доски под маркер и флипчарты</li>
-                        <li>Много стульев и бабблы</li>
-                        <li>Много места для общения во время кофе-брейка</li>
-                    </ul>
-                </div>
-
-                <div class="col-md-5">
-                    <img class="img-responsive img-center" src="@{'/public/images/rent.png'}" alt="Rent">
-                </div>
-            </div>
-
             <p><span class="text-24"><br>Оставить заявку на проведение мероприятия в IT-лофте</span></p>
 
-            <form id="js-request-form" action="@{Application.request()}" enctype="multipart/form-data" method="POST">
-                <div class="row">
-                    <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <form id="js-request-form" action="@{Application.request()}" enctype="multipart/form-data" method="POST">
                         <div class="form-group">
                             <input type="text" class="form-control input-loft text-20 full-height" name="requesterForm.name" placeholder="Как вас зовут?">
                             <div class="form-error js-error-name"></div>
@@ -253,11 +208,14 @@
                         </div>
 
                         <button type="submit" class="btn btn-loft text-22 full-width" id="js-submit">Оставить заявку</button>
-                    </div>
-                </div>
 
-                <div class="response" id="js-response"></div>
-            </form>
+                        <div class="response" id="js-response"></div>
+                    </form>
+                </div>
+                <div class="col-md-5">
+                    <img class="img-responsive img-center" src="@{'/public/images/rent.png'}" alt="Rent">
+                </div>
+            </div>
         </div>
     </div>
 
