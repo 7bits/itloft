@@ -10,7 +10,7 @@
     </div>
 
     <div id="crudListTable">
-        #{crud.table fields:['name', 'email', 'phone', 'title', 'date', 'createdAt']}
+        #{crud.table fields:['name', 'email', 'phone', 'title', 'startDate', 'endDate', 'description', 'logo', 'link', 'createdAt']}
             #{crud.custom 'createdAt'}
                 ${object.getHumanReadableCreatedAtDate()}
             #{/crud.custom}
