@@ -64,6 +64,10 @@ public class FileTypeCheck extends AbstractAnnotationCheck<FileType> {
             final Validator validator
     ) throws OValException {
 
+        if (value == null) {
+            return true;
+        }
+
         requireMessageVariablesRecreation();
         String mimeType = new MimetypesFileTypeMap().getContentType((File) value);
 

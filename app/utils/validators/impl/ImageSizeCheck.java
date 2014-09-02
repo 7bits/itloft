@@ -67,6 +67,10 @@ public class ImageSizeCheck extends AbstractAnnotationCheck<ImageSize> {
             final Validator validator
     ) throws OValException {
 
+        if (value == null) {
+            return true;
+        }
+
         requireMessageVariablesRecreation();
         BufferedImage readImage;
         Integer imageHeight = null;

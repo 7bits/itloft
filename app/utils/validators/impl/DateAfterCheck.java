@@ -62,7 +62,7 @@ public class DateAfterCheck extends AbstractAnnotationCheck<DateAfter> {
     ) throws OValException {
 
         requireMessageVariablesRecreation();
-        if (before == null) {
+        if (value == null || before == null) {
             return true;
         }
 
