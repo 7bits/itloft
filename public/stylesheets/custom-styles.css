@@ -336,19 +336,23 @@ a:focus {
     text-align: center;
 }
 
-.history-timeline:after {
+.history-circle {
     background: #ffffff;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    margin: -5px 50%;
+    margin: 11px 50% -5px 50%;
 }
 
-.history-active .history-timeline:after {
-    background: #ffa328;
+.history-active .history-circle {
+    background: #f39301;
     width: 14px;
     height: 14px;
-    margin: -7px 50%;
+    margin: 9px 50% -7px 50%;
+}
+
+.history-active .history-timeline span {
+    color: #f39301;
 }
 
 .history-column {
@@ -363,4 +367,30 @@ a:focus {
 
 .history-active {
     background-color: #132940;
+}
+
+.history-container .history-prev {
+    width: 44px;
+    height: 44px;
+    left: -80px;
+    margin-top: 30px;
+    background: url(../images/bxslider/controls.png) no-repeat -4px 0;
+    cursor: pointer;
+}
+
+.history-container .history-next {
+    width: 44px;
+    height: 44px;
+    right: -80px;
+    margin-top: 30px;
+    background: url(../images/bxslider/controls.png) no-repeat -57px 0;
+    cursor: pointer;
+}
+
+.history-container .history-prev:hover {
+    background-position: -4px -45px;
+}
+
+.history-container .history-next:hover {
+    background-position: -57px -45px;
 }

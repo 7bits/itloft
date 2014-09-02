@@ -47,6 +47,14 @@ $(document).ready(function() {
   $('.bxslider').bxSlider({
     auto: true
   });
+
+  // Activates BX Slider for history
+  $('.bxslider-history').bxSlider({
+    minSlides: 3,
+    maxSlides: 3,
+    slideWidth: '33.333333%'
+
+  });
 });
 
 $(window).resize(function() {
