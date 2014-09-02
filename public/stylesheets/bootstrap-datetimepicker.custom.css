@@ -1,0 +1,47 @@
+/*!
+ *  Custom CSS styles for Bootstrap DatetimePicker
+ */
+
+.datetimepicker {
+    background-color: #2c4d6e;
+    color: #eeeeee;
+}
+
+[class*=" datetimepicker-dropdown"]:after {
+    border-bottom: 6px solid #2c4d6e;
+}
+
+.datetimepicker table tr td.minute:hover {
+    background: #193754;
+}
+
+.datetimepicker table tr td.hour:hover {
+    background: #193754;
+}
+
+.datetimepicker table tr td.day:hover {
+    background: #193754;
+}
+
+.datetimepicker table tr td.active,
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active.disabled:hover {
+    background-image: none;
+}
+
+.datetimepicker table tr td span:hover {
+    background: #193754;
+}
+
+.datetimepicker table tr td span.active,
+.datetimepicker table tr td span.active:hover,
+.datetimepicker table tr td span.active.disabled,
+.datetimepicker table tr td span.active.disabled:hover {
+    background-image: none;
+}
+
+.datetimepicker thead tr:first-child th:hover,
+.datetimepicker tfoot tr:first-child th:hover {
+    background: #193754;
+}
