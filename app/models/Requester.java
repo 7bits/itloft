@@ -2,6 +2,7 @@ package models;
 
 import org.joda.time.DateTime;
 import play.data.validation.Email;
+import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
@@ -9,6 +10,7 @@ import play.libs.MimeTypes;
 import utils.DateTimeConverter;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Transient;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,8 +25,8 @@ public class Requester extends Model {
     @Required
     public String name;
 
-    @Email
     @Required
+    @Email
     public String email;
 
     @Required
@@ -39,7 +41,9 @@ public class Requester extends Model {
     @Required
     public Long endDate;
 
+    @Lob
     @Required
+    @MaxSize(1000)
     public String description;
 
     @Required

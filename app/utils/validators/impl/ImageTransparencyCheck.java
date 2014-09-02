@@ -45,6 +45,10 @@ public class ImageTransparencyCheck extends AbstractAnnotationCheck<ImageTranspa
             final Validator validator
     ) throws OValException {
 
+        if (value == null) {
+            return true;
+        }
+
         BufferedImage readImage;
         Boolean isSatisfied = false;
         try {

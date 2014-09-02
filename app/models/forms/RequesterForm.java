@@ -2,6 +2,7 @@ package models.forms;
 
 import play.data.validation.Email;
 import play.data.validation.InFuture;
+import play.data.validation.MaxSize;
 import play.data.validation.Phone;
 import play.data.validation.Required;
 import play.data.validation.URL;
@@ -43,6 +44,7 @@ public class RequesterForm extends Model {
     public Date endDate;
 
     @Required
+    @MaxSize(1000)
     public String description;
 
     @Required
