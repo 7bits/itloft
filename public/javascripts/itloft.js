@@ -44,7 +44,9 @@ $(document).ready(function() {
   });
 
   // Activates BX Slider
-  $('.bxslider').bxSlider();
+  $('.bxslider').bxSlider({
+    auto: true
+  });
 });
 
 $(window).resize(function() {
