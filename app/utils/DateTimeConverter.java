@@ -29,6 +29,30 @@ public class DateTimeConverter {
             result.append(RU_MONTHS[dateTime.getMonthOfYear() - 1]);
             result.append(" ");
             result.append(dateTime.year().getAsText());
+
+            return result.toString();
+        }
+    }
+
+    /**
+     * Generates human readable string from a unix timestamp with Russian names of months
+     * with time (hours and minutes).
+     * @param date unix timestamp.
+     * @return human readable string.
+     */
+    public static String fromLongWithTime(final Long date) {
+
+        if (date == null) {
+            return "";
+        } else {
+            DateTime dateTime = new DateTime(date * 1000L);
+            StringBuffer result = new StringBuffer();
+
+            result.append(dateTime.dayOfMonth().getAsShortText());
+            result.append(" ");
+            result.append(RU_MONTHS[dateTime.getMonthOfYear() - 1]);
+            result.append(" ");
+            result.append(dateTime.year().getAsText());
             result.append(" ");
             DateTimeFormatter timeFormat = DateTimeFormat.forPattern("kk:mm");
             result.append(timeFormat.print(dateTime));
