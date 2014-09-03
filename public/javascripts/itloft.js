@@ -50,9 +50,9 @@ $(document).ready(function() {
 
   // Activates BX Slider for events history
   $('.bxslider-history').bxSlider({
-    minSlides: 3,
-    maxSlides: 3,
-    moveSlides: 3,
+    minSlides: 2,
+    maxSlides: 2,
+    moveSlides: 2,
     infiniteLoop: false,
     slideWidth: '9999px',
     hideControlOnEnd: true,
