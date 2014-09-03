@@ -21,6 +21,7 @@ test-result/
 modules/
 data/
 db-backups/
+precompiled/
 hidden.properties
 password.properties
 server.pid

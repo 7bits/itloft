@@ -43,17 +43,20 @@ $(document).ready(function() {
     $(this).parent().parent().find(".js-file-path").val(this.value);
   });
 
-  // Activates BX Slider
+  // Activates BX Slider for main page
   $('.bxslider').bxSlider({
     auto: true
   });
 
-  // Activates BX Slider for history
+  // Activates BX Slider for events history
   $('.bxslider-history').bxSlider({
     minSlides: 3,
     maxSlides: 3,
-    slideWidth: '33.333333%'
-
+    moveSlides: 1,
+    infiniteLoop: false,
+    slideWidth: '9999px',
+    hideControlOnEnd: true,
+    pager: false
   });
 });
 

@@ -5,27 +5,35 @@ import models.JsonResponse;
 import models.Requester;
 import models.Subscription;
 import models.forms.RequesterForm;
+import models.views.EventsHistoryMonthView;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import org.joda.time.DateTime;
+import org.joda.time.Period;
 import play.Logger;
 import play.data.validation.*;
 import play.data.validation.Error;
 import play.libs.Mail;
 import play.mvc.Controller;
+import utils.DateTimeConverter;
 import utils.ValidationUtils;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Application extends Controller {
 
+    private static final long MILLIS_IN_SECOND = 1000L;
+
     public static void index() {
 
-        long currentDate = new DateTime(new Date()).getMillis() / 1000l;
+        long currentDate = new DateTime(new Date()).getMillis() / MILLIS_IN_SECOND;
 
         List<Event> pastEvents = Event.find("select o from Event o where date <= ? order by date desc", currentDate).fetch(3);
         Collections.reverse(pastEvents);
@@ -126,10 +134,42 @@ public class Application extends Controller {
 
     public static void events() {
 
-        long currentDate = new DateTime(new Date()).monthOfYear().getDateTime().getMillis() / 1000l;
+        DateTime currentDate = new DateTime(new Date());
+        // Such string (month + year) will be a key
+        String currentMonth = currentDate.monthOfYear().getAsString() + currentDate.year().getAsString();
+        List<Event> events = Event.find("order by date").fetch();
+        Map<String, EventsHistoryMonthView> eventsView = null;
 
-//        List<Event> events = Event.find("select o from Event o where date <= ? order by date desc", currentDate).fetch(3);
+        if (events != null && events.size() > 0) {
+            eventsView = new LinkedHashMap<String, EventsHistoryMonthView>();
+            Event firstEvent = events.get(0);
+            Event lastEvent = events.get(events.size() - 1);
+            DateTime firstDate = new DateTime(firstEvent.date * MILLIS_IN_SECOND);
+            DateTime lastDate = new DateTime(lastEvent.date * MILLIS_IN_SECOND);
+            DateTime iterateDate = firstDate;
 
-        render();
+            // Making eventsView map without events
+            while (iterateDate.year().get() != lastDate.year().get() ||
+                    iterateDate.monthOfYear().get() != lastDate.monthOfYear().get()) {
+                eventsView.put(
+                        iterateDate.monthOfYear().getAsString() + iterateDate.year().getAsString(),
+                        new EventsHistoryMonthView(DateTimeConverter.monthName(iterateDate.monthOfYear().get()))
+                );
+                iterateDate = iterateDate.plus(Period.months(1));
+            }
+            eventsView.put(
+                    iterateDate.monthOfYear().getAsString() + iterateDate.year().getAsString(),
+                    new EventsHistoryMonthView(DateTimeConverter.monthName(iterateDate.monthOfYear().get()))
+            );
+
+            // Inserting events in map
+            for (Event event: events) {
+                DateTime eventDate = new DateTime(event.date * MILLIS_IN_SECOND);
+                String eventMonth = eventDate.monthOfYear().getAsString() + eventDate.year().getAsString();
+                eventsView.get(eventMonth).events.add(event);
+            }
+        }
+
+        render(eventsView, currentMonth);
     }
 }

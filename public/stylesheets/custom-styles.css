@@ -326,10 +326,6 @@ a:focus {
     display: none;
 }
 
-.history-container {
-    display: table;
-}
-
 .history-timeline {
     border-bottom:1px solid #ffffff;
     background-color: #193754;
@@ -341,24 +337,21 @@ a:focus {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    margin: 11px 50% -5px 50%;
+    margin: 0 auto;
+    margin-bottom: -5px;
+    margin-top: 11px;
 }
 
 .history-active .history-circle {
     background: #f39301;
     width: 14px;
     height: 14px;
-    margin: 9px 50% -7px 50%;
+    margin-bottom: -7px;
+    margin-top: 9px;
 }
 
 .history-active .history-timeline span {
     color: #f39301;
-}
-
-.history-column {
-    display: table-cell;
-    vertical-align: top;
-    float: none;
 }
 
 .history-event {
@@ -369,28 +362,10 @@ a:focus {
     background-color: #132940;
 }
 
-.history-container .history-prev {
-    width: 44px;
-    height: 44px;
-    left: -80px;
-    margin-top: 30px;
-    background: url(../images/bxslider/controls.png) no-repeat -4px 0;
-    cursor: pointer;
-}
-
-.history-container .history-next {
-    width: 44px;
-    height: 44px;
-    right: -80px;
-    margin-top: 30px;
-    background: url(../images/bxslider/controls.png) no-repeat -57px 0;
-    cursor: pointer;
-}
-
-.history-container .history-prev:hover {
-    background-position: -4px -45px;
-}
-
-.history-container .history-next:hover {
-    background-position: -57px -45px;
+.history-active:after {
+    height: 100%;
+    position: absolute;
+    background-color: #132940;
+    content: ' ';
+    width: 100%;
 }

@@ -66,3 +66,10 @@
 .bx-wrapper .bx-controls-auto .bx-stop {
     background: url(../images/bxslider/controls.png) -86px -44px no-repeat;
 }
+
+.history-container .bx-wrapper .bx-viewport {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border:  none;
+}

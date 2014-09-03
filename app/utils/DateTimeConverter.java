@@ -6,9 +6,14 @@ import org.joda.time.format.DateTimeFormatter;
 
 public class DateTimeConverter {
 
-    private static final String[] RU_MONTHS = {
+    private static final String[] RU_MONTHS_GENITIVE = {
         "января", "февраля", "марта", "апреля", "мая", "июня",
         "июля", "августа", "сентября", "октября", "ноября", "декабря"
+    };
+
+    private static final String[] RU_MONTHS = {
+            "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+            "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
     };
 
     /**
@@ -26,7 +31,7 @@ public class DateTimeConverter {
 
             result.append(dateTime.dayOfMonth().getAsShortText());
             result.append(" ");
-            result.append(RU_MONTHS[dateTime.getMonthOfYear() - 1]);
+            result.append(RU_MONTHS_GENITIVE[dateTime.getMonthOfYear() - 1]);
             result.append(" ");
             result.append(dateTime.year().getAsText());
 
@@ -50,7 +55,7 @@ public class DateTimeConverter {
 
             result.append(dateTime.dayOfMonth().getAsShortText());
             result.append(" ");
-            result.append(RU_MONTHS[dateTime.getMonthOfYear() - 1]);
+            result.append(RU_MONTHS_GENITIVE[dateTime.getMonthOfYear() - 1]);
             result.append(" ");
             result.append(dateTime.year().getAsText());
             result.append(" ");
@@ -59,5 +64,15 @@ public class DateTimeConverter {
 
             return result.toString();
         }
+    }
+
+    /**
+     * Returns localized month name
+     * @param number    Number of month, January - 1
+     * @return localized month name
+     */
+    public static String monthName(final int number) {
+
+        return RU_MONTHS[ number - 1 ];
     }
 }
