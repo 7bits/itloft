@@ -5,6 +5,7 @@
 # Controllers
 GET     /                                       Application.index
 GET     /application/eventimg                   Application.eventImg
+GET     /events                                 Application.events
 
 # Post controllers
 POST    /subscribe                              Application.subscribe
