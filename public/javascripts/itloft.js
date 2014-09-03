@@ -53,6 +53,7 @@ $(document).ready(function() {
     minSlides: 3,
     maxSlides: 3,
     moveSlides: 1,
+    autoStart: false,
     infiniteLoop: false,
     slideWidth: '9999px',
     hideControlOnEnd: true,
