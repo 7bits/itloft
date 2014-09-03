@@ -52,7 +52,7 @@ $(document).ready(function() {
   $('.bxslider-history').bxSlider({
     minSlides: 3,
     maxSlides: 3,
-    moveSlides: 1,
+    moveSlides: 3,
     infiniteLoop: false,
     slideWidth: '9999px',
     hideControlOnEnd: true,
