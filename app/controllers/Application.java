@@ -134,6 +134,7 @@ public class Application extends Controller {
 
     public static void events() {
 
+        //TODO: Need to refactor this to presenter
         DateTime currentDate = new DateTime(new Date());
         // Such string (month + year) will be a key
         String currentMonth = currentDate.monthOfYear().getAsString() + currentDate.year().getAsString();
@@ -153,13 +154,13 @@ public class Application extends Controller {
                     iterateDate.monthOfYear().get() != lastDate.monthOfYear().get()) {
                 eventsView.put(
                         iterateDate.monthOfYear().getAsString() + iterateDate.year().getAsString(),
-                        new EventsHistoryMonthView(DateTimeConverter.monthName(iterateDate.monthOfYear().get()))
+                        new EventsHistoryMonthView(DateTimeConverter.fromDateTimeToMonthYear(iterateDate))
                 );
                 iterateDate = iterateDate.plus(Period.months(1));
             }
             eventsView.put(
                     iterateDate.monthOfYear().getAsString() + iterateDate.year().getAsString(),
-                    new EventsHistoryMonthView(DateTimeConverter.monthName(iterateDate.monthOfYear().get()))
+                    new EventsHistoryMonthView(DateTimeConverter.fromDateTimeToMonthYear(iterateDate))
             );
 
             // Inserting events in map
