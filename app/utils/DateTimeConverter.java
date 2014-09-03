@@ -66,13 +66,24 @@ public class DateTimeConverter {
         }
     }
 
-    /**
-     * Returns localized month name
-     * @param number    Number of month, January - 1
-     * @return localized month name
-     */
-    public static String monthName(final int number) {
 
-        return RU_MONTHS[ number - 1 ];
+    /**
+     * Generates human readable string from DateTime "month year" localized
+     * @param dateTime  Joda DateTime date.
+     * @return human readable string.
+     */
+    public static String fromDateTimeToMonthYear(final DateTime dateTime) {
+
+        if (dateTime == null) {
+            return "";
+        } else {
+            StringBuffer result = new StringBuffer();
+
+            result.append(RU_MONTHS[ dateTime.getMonthOfYear() - 1 ]);
+            result.append(" ");
+            result.append(dateTime.year().getAsText());
+
+            return result.toString();
+        }
     }
 }
