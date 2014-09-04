@@ -56,10 +56,10 @@ public class Event extends Model {
     }
 
     public void setNotifySubscribers(final Boolean notifySubscribers) {
-        if (notifySubscribers) {
+        if (notifySubscribers && (this.notifySubscribers == null || !this.notifySubscribers)) {
             MailNotification.notifySubscribersNewEvent(this);
         }
-        this.notifySubscribers = false;
+        this.notifySubscribers = notifySubscribers;
     }
 
 }
