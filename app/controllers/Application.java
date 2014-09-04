@@ -15,6 +15,7 @@ import play.data.validation.*;
 import play.data.validation.Error;
 import play.libs.Mail;
 import play.mvc.Controller;
+import services.MailNotification;
 import utils.DateTimeConverter;
 import utils.ValidationUtils;
 
@@ -109,24 +110,7 @@ public class Application extends Controller {
                     requesterForm.link
             ).save();
 
-            SimpleEmail simpleEmail = new SimpleEmail();
-            try {
-                simpleEmail.setCharset("utf-8");
-                simpleEmail.setFrom("at@7bits.it");
-                simpleEmail.addTo("at@7bits.it");
-                simpleEmail.setSubject("IT-LOFT");
-                simpleEmail.setMsg(
-                    "Заявка на участие:\n\n  name: " + requester.name
-                        + "\n  email: " + requester.email
-                        + "\n  phone: " + requester.phone
-                        + "\n  title: " + requester.title
-                        + "\n  start date: " + requester.startDate
-                        + "\n  createdAt: " + requester.getHumanReadableCreatedAtDate()
-                );
-            } catch (EmailException e) {
-                Logger.error("Could not send email", e);
-            }
-            Mail.send(simpleEmail);
+            MailNotification.notifyAdminNewRequester(requester);
         }
 
         renderJSON(jsonResponse);
@@ -134,7 +118,7 @@ public class Application extends Controller {
 
     public static void events() {
 
-        //TODO: Need to refactor this to presenter
+        //TODO: Need to refactor this to presenter + service
         DateTime currentDate = new DateTime(new Date());
         // Such string (month + year) will be a key
         String currentMonth = currentDate.monthOfYear().getAsString() + currentDate.year().getAsString();

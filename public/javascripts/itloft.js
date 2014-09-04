@@ -69,7 +69,6 @@ $(document).ready(function() {
       scrollTo = i;
     }
   }
-  scrollTo++;
   var scrollToSlide = Math.floor(scrollTo/HISTORY_SLIDES);
   historySlider.goToSlide(scrollToSlide);
 });
