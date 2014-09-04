@@ -51,7 +51,7 @@ $(document).ready(function() {
   var HISTORY_SLIDES = 2;
 
   // Activates BX Slider for events history
-  historySlider = $('.bxslider-history').bxSlider({
+  var historySlider = $('.bxslider-history').bxSlider({
     minSlides: HISTORY_SLIDES,
     maxSlides: HISTORY_SLIDES,
     moveSlides: HISTORY_SLIDES,
@@ -69,7 +69,8 @@ $(document).ready(function() {
       scrollTo = i;
     }
   }
-  var scrollToSlide = (scrollTo > 0)? Math.ceil(scrollTo/HISTORY_SLIDES) - 1 : 0
+  scrollTo++;
+  var scrollToSlide = Math.floor(scrollTo/HISTORY_SLIDES);
   historySlider.goToSlide(scrollToSlide);
 });
 
