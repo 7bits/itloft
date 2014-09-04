@@ -1,6 +1,7 @@
 package models;
 
-import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDateTime;
 import play.data.validation.Email;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
@@ -69,8 +70,9 @@ public class Requester extends Model {
         this.email = email;
         this.phone = phone;
         this.title = title;
-        this.startDate = new DateTime(startDate).getMillis() / MILLIS_IN_SECOND;
-        this.endDate = new DateTime(endDate).getMillis() / MILLIS_IN_SECOND;
+        // Because Play converts time received in form to server timezone, we need timezone conversion
+        this.startDate = (new LocalDateTime(startDate).toDateTime(DateTimeZone.UTC)).getMillis() / MILLIS_IN_SECOND;
+        this.endDate = (new LocalDateTime(endDate).toDateTime(DateTimeZone.UTC)).getMillis() / MILLIS_IN_SECOND;
         this.description = description;
         Blob tempLogo = new Blob();
         try {
@@ -80,7 +82,7 @@ public class Requester extends Model {
         }
         this.logo = tempLogo;
         this.link = link;
-        this.createdAt = new DateTime(new Date()).getMillis() / MILLIS_IN_SECOND;
+        this.createdAt = (new LocalDateTime().toDateTime(DateTimeZone.UTC)).getMillis() / MILLIS_IN_SECOND;
     }
 
     @Transient

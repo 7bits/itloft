@@ -1,6 +1,7 @@
 package utils;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -26,7 +27,7 @@ public class DateTimeConverter {
         if (date == null) {
             return "";
         } else {
-            DateTime dateTime = new DateTime(date * 1000L);
+            DateTime dateTime = new DateTime(date * 1000L, DateTimeZone.UTC);
             StringBuffer result = new StringBuffer();
 
             result.append(dateTime.dayOfMonth().getAsShortText());
@@ -50,7 +51,7 @@ public class DateTimeConverter {
         if (date == null) {
             return "";
         } else {
-            DateTime dateTime = new DateTime(date * 1000L);
+            DateTime dateTime = new DateTime(date * 1000L, DateTimeZone.UTC);
             StringBuffer result = new StringBuffer();
 
             result.append(dateTime.dayOfMonth().getAsShortText());
