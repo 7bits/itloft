@@ -48,16 +48,29 @@ $(document).ready(function() {
     auto: true
   });
 
+  var HISTORY_SLIDES = 2;
+
   // Activates BX Slider for events history
-  $('.bxslider-history').bxSlider({
-    minSlides: 2,
-    maxSlides: 2,
-    moveSlides: 2,
+  historySlider = $('.bxslider-history').bxSlider({
+    minSlides: HISTORY_SLIDES,
+    maxSlides: HISTORY_SLIDES,
+    moveSlides: HISTORY_SLIDES,
     infiniteLoop: false,
     slideWidth: '9999px',
     hideControlOnEnd: true,
     pager: false
   });
+
+  // Scroll BX Slider to current month or to last slide
+  var $slides = $('.bxslider-history').find("li");
+  var scrollTo = ($slides.length > 0)? $slides.length - 1 : 0;
+  for (var i=0; i<$slides.length; i++) {
+    if ($slides.eq(i).hasClass("history-active")) {
+      scrollTo = i;
+    }
+  }
+  var scrollToSlide = (scrollTo > 0)? Math.ceil(scrollTo/HISTORY_SLIDES) - 1 : 0
+  historySlider.goToSlide(scrollToSlide);
 });
 
 $(window).resize(function() {
