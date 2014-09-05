@@ -50,27 +50,30 @@ $(document).ready(function() {
 
   var HISTORY_SLIDES = 2;
 
-  // Activates BX Slider for events history
-  var historySlider = $('.bxslider-history').bxSlider({
-    minSlides: HISTORY_SLIDES,
-    maxSlides: HISTORY_SLIDES,
-    moveSlides: HISTORY_SLIDES,
-    infiniteLoop: false,
-    slideWidth: '9999px',
-    hideControlOnEnd: true,
-    pager: false
-  });
+  // Events history page
+  if ($('.bxslider-history').size > 0) {
+    // Activates BX Slider for events history
+    var historySlider = $('.bxslider-history').bxSlider({
+      minSlides: HISTORY_SLIDES,
+      maxSlides: HISTORY_SLIDES,
+      moveSlides: HISTORY_SLIDES,
+      infiniteLoop: false,
+      slideWidth: '9999px',
+      hideControlOnEnd: true,
+      pager: false
+    });
 
-  // Scroll BX Slider to current month or to last slide
-  var $slides = $('.bxslider-history').find("li");
-  var scrollTo = ($slides.length > 0)? $slides.length - 1 : 0;
-  for (var i=0; i<$slides.length; i++) {
-    if ($slides.eq(i).hasClass("history-active")) {
-      scrollTo = i;
+    // Scroll BX Slider to current month or to last slide
+    var $slides = $('.bxslider-history').find("li");
+    var scrollTo = ($slides.length > 0)? $slides.length - 1 : 0;
+    for (var i=0; i<$slides.length; i++) {
+      if ($slides.eq(i).hasClass("history-active")) {
+        scrollTo = i;
+      }
     }
+    var scrollToSlide = Math.floor(scrollTo/HISTORY_SLIDES);
+    historySlider.goToSlide(scrollToSlide);
   }
-  var scrollToSlide = Math.floor(scrollTo/HISTORY_SLIDES);
-  historySlider.goToSlide(scrollToSlide);
 });
 
 $(window).resize(function() {
