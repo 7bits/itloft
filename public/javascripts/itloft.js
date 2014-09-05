@@ -51,7 +51,7 @@ $(document).ready(function() {
   var HISTORY_SLIDES = 2;
 
   // Events history page
-  if ($('.bxslider-history').size > 0) {
+  if ($('.bxslider-history').size() > 0) {
     // Activates BX Slider for events history
     var historySlider = $('.bxslider-history').bxSlider({
       minSlides: HISTORY_SLIDES,
