@@ -1,5 +1,14 @@
 /** Administration area **/
 
+/** PATCH BEGIN **/
+/** Need to import all external css, because we cannot edit layout **/
+@import url("bootstrap.min.css");
+@import url("bootstrap-datetimepicker.css");
+html {
+    font-size: 16px;
+}
+/** PATCH END **/
+
 #crud {
 	margin: 0;
 	padding: 0;
