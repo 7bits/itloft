@@ -7,7 +7,6 @@ $(document).ready(function() {
   var dtp = $(DATE_INPUT_SELECTOR).datetimepicker({
       format: DATE_FORMAT,
       autoclose: true,
-      startDate: new Date(),
       todayBtn: true,
       minuteStep: 5,
       language: 'ru'
