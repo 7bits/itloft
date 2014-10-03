@@ -1,0 +1,52 @@
+#{extends 'CRUD/layout.html' /}
+#{set title:messages.get('crud.blank.title', type.modelName) /}
+
+<div id="crudBlank" class="${type.name}">
+
+    <h2 id="crudBlankTitle">&{'crud.blank.title', type.modelName}</h2>
+
+    <div class="objectForm">
+    #{form action:@create(), enctype:'multipart/form-data'}
+        #{crud.form}
+            #{crud.custom 'startDate'}
+                <label for="startDate">
+                &{'startDate'}
+                </label>
+                <div class="startDate">
+                    <input type="text" class="crud-datetime" id="startDate" value="" />
+                    <input type="hidden" name="${fieldName}" value="${object.startDate}" />
+                </div>
+            #{/crud.custom}
+            #{crud.custom 'endDate'}
+                <label for="endDate">
+                &{'endDate'}
+                </label>
+                <div class="endDate">
+                    <input type="text" class="crud-datetime" id="endDate" value="" />
+                    <input type="hidden" name="${fieldName}" value="${object.endDate}" />
+                </div>
+            #{/crud.custom}
+            #{crud.custom 'createdAt'}
+                <label for="createdAt">
+                &{'createdAt'}
+                </label>
+                <div class="createdAt">
+                    <input type="text" class="crud-datetime" id="createdAt" value="" />
+                    <input type="hidden" name="${fieldName}" value="${object.createdAt}" />
+                </div>
+            #{/crud.custom}
+        #{/crud.form}
+        <p class="crudButtons">
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" />
+        </p>
+    #{/form}
+    </div>
+
+</div>
+<script type="text/javascript" src="@{'/public/javascripts/jquery-1.11.0.min.js'}" charset="${_response_encoding}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/bootstrap.min.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/bootstrap-datetimepicker.min.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/bootstrap-datetimepicker.ru.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/crud.js'}"></script>
