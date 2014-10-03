@@ -34,6 +34,10 @@ public class Event extends Model {
     @Required
     public Boolean notifySubscribers;
 
+    /** Needed because on setting notifySubscribers model is not filled completely */
+    @Transient
+    public Boolean sendNotification = false;
+
     public Event(final Long date, final String title, final String description, final Blob image, final String reference) {
         this.date = date;
         this.title = title;
@@ -41,6 +45,13 @@ public class Event extends Model {
         this.image = image;
         this.reference = reference;
         this.notifySubscribers = false;
+    }
+
+    public void setDate(final Long date) {
+        this.date = date;
+        if (sendNotification != null && sendNotification) {
+            MailNotification.notifySubscribersNewEvent(this);
+        }
     }
 
     @Transient
@@ -57,7 +68,7 @@ public class Event extends Model {
 
     public void setNotifySubscribers(final Boolean notifySubscribers) {
         if (notifySubscribers && (this.notifySubscribers == null || !this.notifySubscribers)) {
-            MailNotification.notifySubscribersNewEvent(this);
+            sendNotification = true;
         }
         this.notifySubscribers = notifySubscribers;
     }
