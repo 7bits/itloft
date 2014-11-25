@@ -110,7 +110,7 @@
                                 <div class="col-xs-10 col-entire">
                                     <span class="text-12">${pastEvent.humanReadableDate}</span><br>
                                     <p><a href="${pastEvent.reference}" target="_blank">${pastEvent.title}</a></p>
-                                    <div class="text-15">${pastEvent.description}</div>
+                                    <div class="text-15">${pastEvent.descriptionReadable.raw()}</div>
                                 </div>
                             </div>
                         #{/list}
@@ -140,7 +140,7 @@
                                 <div class="col-xs-10 col-entire">
                                     <span class="text-12">${futureEvent.humanReadableDate}</span><br>
                                     <p><a href="${futureEvent.reference}" target="_blank">${futureEvent.title}</a></p>
-                                    <div class="text-15">${futureEvent.description}</div>
+                                    <div class="text-15">${futureEvent.descriptionReadable.raw()}</div>
                                 </div>
                             </div>
                         #{/list}

@@ -70,7 +70,7 @@
                                 <div class="col-xs-10 col-entire">
                                     <span class="text-12">${event.humanReadableDate}</span><br>
                                     <p><a href="${event.reference}" target="_blank">${event.title}</a></p>
-                                    <div class="text-15">${event.description}</div>
+                                    <div class="text-15">${event.descriptionReadable.raw()}</div>
                                 </div>
                             </div>
                         #{/list}

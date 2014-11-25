@@ -8,7 +8,7 @@
  * Released under the MIT license - http://opensource.org/licenses/MIT
  */
 /**
- * NOTICE: THERE IS A BUG FIX ON LINE 280 THROUGH 288
+ * NOTICE: THERE IS A BUG FIX ON LINE 276 THROUGH 291
  */
 
 ;(function($){
@@ -273,23 +273,25 @@
 
 		var loadElements = function(selector, callback){
 			var total = selector.find('img, iframe').length;
+            var started = false;  // Added for bug fix
 			if (total == 0){
 				callback();
+                started = true;  // Added for bug fix
 				return;
 			}
-      /**
-       *  BUG FIX: CALL CALLBACK EXPLICITLY IN 5 SECONDS
-       *  Because if at least one image is not found or cannot be loaded
-       *  by other reasons, BXSlider will never hide "Loading" DIV
-       */
-      setTimeout(callback, 5000);
-      /**
-       * BUG FIX END
-       */
+            setTimeout(function() {  // Added for bug fix
+                if (!started) {      // Added for bug fix
+                    callback()       // Added for bug fix
+                    started = true;  // Added for bug fix
+                }                    // Added for bug fix
+            }, 5000);                // Added for bug fix
 			var count = 0;
 			selector.find('img, iframe').each(function(){
 				$(this).one('load', function() {
-				  if(++count == total) callback();
+				  if(++count == total && !started) {    // started check added for bug fix
+                      callback();
+                      started = true;    // Added for bug fix
+                  }
 				}).each(function() {
 				  if(this.complete) $(this).load();
 				});

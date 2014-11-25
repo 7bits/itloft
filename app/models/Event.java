@@ -61,6 +61,12 @@ public class Event extends Model {
     }
 
     @Transient
+    public String getDescriptionReadable() {
+
+        return description.replace("\n", "<br/>\n");
+    }
+
+    @Transient
     public String getImageUUID() {
 
         return image.getUUID();
