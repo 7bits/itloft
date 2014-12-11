@@ -61,6 +61,12 @@ public class Event extends Model {
     }
 
     @Transient
+    public String getHumanReadableDateTime() {
+
+        return DateTimeConverter.fromLongWithTime(date);
+    }
+
+    @Transient
     public String getDescriptionReadable() {
 
         return description.replace("\n", "<br/>\n");
