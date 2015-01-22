@@ -50,7 +50,6 @@ public class RequesterForm extends Model {
     @Required
     @FileType(message = "validation.not-png-or-gif", types = { "image/jpeg", "image/png" })
     @ImageSize(message = "validation.image-size-100-100", width = 100, height = 100)
-    @ImageTransparency
     public File logo;
 
     @Required
