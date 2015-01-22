@@ -321,8 +321,12 @@ a:focus {
 	right: 10px;
 }
 
-.response {
+.sub-response {
     text-align: center;
+    display: none;
+}
+
+.response {
     display: none;
 }
 
